@@ -7,5 +7,12 @@ function log_message() {
 function calculate_sum() {
     local a=$1
     local b=$2
+    # Ensure inputs are numbers
     echo $((a + b))
+}
+
+function divide() {
+    local a=$1
+    local b=$2
+    echo $((a / b))
 }
