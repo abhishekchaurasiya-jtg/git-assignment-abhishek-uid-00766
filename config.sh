@@ -1,4 +1,6 @@
 #!/bin/bash
-export APP_ENV="development"
-export DEBUG=true
-export DB_HOST="localhost"
+export APP_ENV="production"
+export DEBUG=false
+export DB_HOST="db.production.internal"
+export TIMEOUT=30
+echo "DEBUG: Config loaded"
