@@ -3,14 +3,21 @@
 function load_data() {
     echo "[LOG] Starting data load..."
     echo "Loading data from database..."
-    sleep 1
-    echo "[LOG] Data load complete."
+    if ! sleep 1; then
+        echo "Error: Failed to sleep/load"
+        exit 1
+    fi
+    echo "[LOG] Data load complete successfully."
 }
 
 function process_records() {
     echo "[LOG] Starting record processing..."
     local count=0
     for i in {1..5}; do
+        if [ -z "$i" ]; then
+             echo "Error: Invalid record"
+             continue
+        fi
         echo "Record $i processed."
         count=$((count + 1))
     done
@@ -18,9 +25,8 @@ function process_records() {
 }
 
 function save_results() {
-    echo "[LOG] Saving..."
     echo "Saving results..."
-    echo "[LOG] Save done."
+    echo "Done."
 }
 
 function main() {
@@ -28,7 +34,7 @@ function main() {
     load_data
     process_records
     save_results
-    echo "--- Finished ---"
+    echo "--- Execution Completed ---"
 }
 
 main
